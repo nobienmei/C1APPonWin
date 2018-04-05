@@ -1,0 +1,118 @@
+﻿@model SampleModel
+@{
+    ViewData["Title"] = "ComponentOne MVC Page";
+}
+<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+<Style>
+    .chart-title {
+        background-color: darkblue;
+    }
+
+    .guage-title {
+        background-color: darkgreen;
+    }
+
+    .number-title {
+        background-color: darkcyan;
+    }
+
+    .calendar-title {
+        background-color: darkred;
+    }
+
+    .autocomplete-title {
+        background-color: darkgoldenrod;
+    }
+
+
+    .title {
+        color: white;
+    }
+
+    h2 {
+        font-size: 30px;
+        font-weight: 700;
+        line-height: 30px;
+        margin-bottom: 50px;
+        text-transform: uppercase !important;
+        font-family: Montserrat,'Helvetica Neue',Helvetica,Arial,sans-serif;
+    }
+
+    .wrap {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .control-item {
+        margin: auto;
+    }
+</Style>
+
+<div class="row wrap">
+    <div class="col-md-4 chart-title title">
+        <h2>FlexChart</h2>
+    </div>
+    <div class="col-md-8 control-item">
+        <c1-flex-chart binding-x="Date" chart-type="Area">
+            <c1-items-source source-collection="Model.Sales" />
+            <c1-flex-chart-series binding="TotalSales" name="総売り上げ" />
+            <c1-flex-chart-series binding="AsiaSales" name="アジアの売り上げ" />
+            <c1-flex-chart-series binding="JapanSales" name="日本の売り上げ" />
+        </c1-flex-chart>
+    </div>
+</div>
+
+<div class="row wrap">
+    <div class="col-md-4 guage-title title">
+        <h2>Guage</h2>
+    </div>
+    <div class="col-md-8 control-item">
+        <c1-radial-gauge min="0" max="100"
+                         start-angle="-20" sweep-angle="220"
+                         width="500" height="200"
+                         show-text="None" value="Model.GuageValue">
+            <c1-gauge-range min="0" max="40" color="red" />
+            <c1-gauge-range min="40" max="80" color="yellow" />
+            <c1-gauge-range min="80" max="100" color="green" />
+        </c1-radial-gauge>
+    </div>
+</div>
+
+
+<div class="row wrap">
+    <div class="col-md-4 number-title title">
+        <h2>InputNumber</h2>
+    </div>
+    <div class="col-md-8 control-item">
+        <c1-input-number value="Model.InputValue"
+                         show-spinner="true"
+                         step="10" format="n0"
+                         min="0" max="1000"
+                         placeholder="１～1000までの値を入力してください。">
+        </c1-input-number>
+    </div>
+</div>
+
+<div class="row wrap">
+    <div class="col-md-4 calendar-title title">
+        <h2>InputDateTime</h2>
+    </div>
+    <div class="col-md-8 control-item">
+        <c1-input-date value="Model.InputDatetime"
+                       min="DateTime.Today.AddYears(-1)"
+                       max="DateTime.Today.AddYears(1)">
+        </c1-input-date>
+    </div>
+</div>
+
+<div class="row wrap">
+    <div class="col-md-4 autocomplete-title title">
+        <h2>MultiAutoComplete</h2>
+    </div>
+    <div class="col-md-8 control-item">
+        <c1-multi-auto-complete selected-index="12"
+                                max-selected-items="5">
+            <c1-items-source source-collection="Model.Todofuken" />
+        </c1-multi-auto-complete>
+    </div>
+</div>
